@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1 (17th November, 2026)
+
+- When a checkout can't start, shop admins now see the reason in the basket (for example "No Stripe key is saved for this mode"); customers still see the general message.
+
 ## 0.1.0 (17th November, 2026)
 
 First version, built for adrianpaye.co.uk (greetings cards).

@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Grow Shop
  * Description:       A small shop for any post type: quantity pricing, options, stock, shipping zones, editable emails, and payment on Stripe's hosted checkout. Everything a shop owner changes is a setting under Shop.
- * Version:           0.1.0
+ * Version:           0.1.1
  * Requires at least: 6.4
  * Requires PHP:      8.0
  * Update URI:        https://github.com/aconitewill/grow-shop
@@ -16,7 +16,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-const GRS_VERSION   = '0.1.0';
+const GRS_VERSION   = '0.1.1';
 const GRS_FILE      = __FILE__;
 const GRS_ORDER     = 'grow_order';
 const GRS_CAP       = 'manage_grow_shop';

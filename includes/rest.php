@@ -77,10 +77,18 @@ function grs_rest_checkout( WP_REST_Request $req ) {
 		(string) $req->get_param( 'return' )
 	);
 	if ( is_wp_error( $result ) ) {
-		$data = $result->get_error_data();
+		$data    = $result->get_error_data();
+		$message = __( 'Sorry, the checkout could not be started. Please try again in a moment.', 'grow-shop' );
+		if ( 'grs_basket' === $result->get_error_code() ) {
+			$message = $result->get_error_message();
+		} elseif ( current_user_can( GRS_CAP ) ) {
+			// Shop admins see the real reason (customers never do).
+			/* translators: %s: the reason from Stripe or the shop */
+			$message = sprintf( __( 'Checkout could not start (shown to admins only): %s', 'grow-shop' ), $result->get_error_message() );
+		}
 		$body = array(
 			'ok'     => false,
-			'errors' => array( 'grs_basket' === $result->get_error_code() ? $result->get_error_message() : __( 'Sorry, the checkout could not be started. Please try again in a moment.', 'grow-shop' ) ),
+			'errors' => array( $message ),
 		);
 		if ( is_array( $data ) && isset( $data['quote'] ) ) {
 			$body['quote'] = grs_quote_for_browser( $data['quote'] );
